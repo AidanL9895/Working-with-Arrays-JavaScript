@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const eternals = [
-        { name: "Ikaris", skills: ["flight", "strength", "laser vision"] },
-        { name: "Sersi", skills: ["matter manipulation", "immortality", "languages"] },
-        { name: "Thena", skills: ["sword", "combat", "speed"] },
-        { name: "Kingo", skills: ["energy projection", "agility", "sword"] },
-        { name: "Makkari", skills: ["speed", "perception", "languages"] }
+        { name: "Ikaris", skills: ["flight", "strength", "laser vision"], imageUrl: "ikaris.jpg" },
+        { name: "Sersi", skills: ["matter manipulation", "immortality", "languages"], imageUrl: "sersi.jpg" },
+        { name: "Thena", skills: ["sword", "combat", "speed"], imageUrl: "thena.jpg" },
+        { name: "Kingo", skills: ["energy projection", "agility", "sword"], imageUrl: "kingo.jpg" },
+        { name: "Makkari", skills: ["speed", "perception", "languages"], imageUrl: "makkari.jpg" }
     ];
     
     const body = document.body;
@@ -75,7 +75,17 @@ document.addEventListener("DOMContentLoaded", () => {
             foundCharacters.forEach(eternal => {
                 const li = document.createElement("li");
                 li.textContent = eternal.name;
-                searchResults.appendChild(li);
+                
+                const img = document.createElement("img");
+                img.setAttribute("src", eternal.imageUrl);
+                img.setAttribute("alt", eternal.name);
+                img.style.width = "100px"; 
+                
+                const resultItem = document.createElement("div");
+                resultItem.appendChild(li);
+                resultItem.appendChild(img);
+                
+                searchResults.appendChild(resultItem);
             });
         } else {
             searchResults.textContent = "No characters found with that skill.";
